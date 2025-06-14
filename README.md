@@ -10,9 +10,10 @@
 
 ## 🎯 Sobre Mim
 
-</td>
-<td>
-javascriptconst Elebeg = {
+Sou um desenvolvedor Full Stack apaixonado por tecnologia e sempre em busca de novos desafios. Especializado em criar aplicações escaláveis e performáticas usando tecnologias modernas.
+
+```javascript
+const Elebeg = {
     code: ["TypeScript", "JavaScript", "Java", "Python"],
     askMeAbout: ["web dev", "backend", "cloud", "microservices"],
     technologies: {
@@ -33,9 +34,7 @@ javascriptconst Elebeg = {
     currentFocus: "Construindo aplicações escaláveis e performáticas",
     funFact: "Eu debugo com console.log() e não tenho vergonha disso! 😄"
 };
-</td>
-</tr>
-</table>
+```
 
 ## 🛠️ Tech Stack
 
@@ -53,11 +52,18 @@ javascriptconst Elebeg = {
 ![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 
 ### DevOps & Tools
 ![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 ![AWS](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
+### Databases
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
 
 </div>
 
@@ -84,6 +90,8 @@ javascriptconst Elebeg = {
 
 ## 🌟 Projetos em Destaque
 
+Aqui estão alguns dos meus projetos que mais me orgulho:
+
 <div align="center">
   
   [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Elebeg&repo=awesome-project&theme=tokyonight)](https://github.com/Elebeg/awesome-project)
@@ -91,29 +99,21 @@ javascriptconst Elebeg = {
 
 </div>
 
+> **Nota:** Certifique-se de substituir `awesome-project` e `cool-api` pelos nomes reais dos seus repositórios.
+
 ## 🎮 Quando não estou codando...
 
-</div>
-<table align="center">
-<tr>
-<td align="center">🎵</td>
-<td><strong>Música</strong><br/>Ouvindo diversos gêneros musicais</td>
-<td align="center">📚</td>
-<td><strong>Aprendizado</strong><br/>Sempre estudando novas tecnologias</td>
-</tr>
-<tr>
-<td align="center">🎮</td>
-<td><strong>Gaming</strong><br/>Relaxando com videogames</td>
-<td align="center">☕</td>
-<td><strong>Café</strong><br/>Combustível do desenvolvedor</td>
-</tr>
-<tr>
-<td align="center">🌱</td>
-<td><strong>Open Source</strong><br/>Contribuindo para a comunidade</td>
-<td align="center">💡</td>
-<td><strong>Inovação</strong><br/>Criando soluções criativas</td>
-</tr>
-</table>
+```javascript
+const hobbies = [
+    "🎵 Ouvindo música",
+    "📚 Aprendendo novas tecnologias", 
+    "🎮 Jogando videogames",
+    "☕ Tomando café",
+    "🌱 Contribuindo para open source"
+];
+
+hobbies.forEach(hobby => console.log(`Gosto de: ${hobby}`));
+```
 
 ## 🤝 Vamos nos conectar!
 
@@ -121,6 +121,7 @@ javascriptconst Elebeg = {
   
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/lucas-schuler-foppa-24723b272/)
   [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:lucasfoppa@hotmail.com)
+  [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Elebeg)
 
 </div>
 
@@ -148,9 +149,13 @@ timeline
     2024 : Full Stack Expert
          : NestJS, Python
          : Arquiteturas complexas
+         
+    2025 : Evolução Contínua
+         : Novas tecnologias
+         : Projetos desafiadores
 ```
 
-## 🎯 Objetivos para 2024
+## 🎯 Objetivos para 2025
 
 - [ ] 🚀 Contribuir para mais projetos open source
 - [ ] 📱 Aprender desenvolvimento mobile (React Native)
@@ -159,16 +164,20 @@ timeline
 - [ ] 📝 Escrever mais artigos técnicos
 - [ ] 🎤 Palestrar em eventos de tecnologia
 
-## 💡 Curiosidade
+## 💭 Filosofia de Desenvolvimento
+
+> "Clean code always looks like it was written by someone who cares." - Robert C. Martin
+
+Acredito que código limpo, bem documentado e testado é a base para aplicações robustas e escaláveis. Sempre busco aplicar as melhores práticas de desenvolvimento e manter-me atualizado com as tendências do mercado.
+
+## 📈 Estatísticas Detalhadas
 
 <div align="center">
-  
-  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Dev Quote" />
-  
-  <br><br>
-  
   <img src="https://komarev.com/ghpvc/?username=Elebeg&color=blueviolet&style=for-the-badge&label=PROFILE+VIEWS" alt="Profile Views" />
+</div>
 
+<div align="center">
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Dev Quote" />
 </div>
 
 ---
@@ -176,6 +185,8 @@ timeline
 <div align="center">
   
   ### 🌊 "Code is like humor. When you have to explain it, it's bad." - Cory House
+  
+  **Obrigado por visitar meu perfil! Sempre aberto para colaborações e novos desafios.** 🚀
   
   ![Footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=150&section=footer&animation=twinkling)
 
