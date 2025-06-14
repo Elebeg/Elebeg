@@ -4,7 +4,7 @@
   
   ![Header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=300&section=header&text=Hello%20World!&fontSize=50&fontColor=fff&animation=twinkling&fontAlignY=32&desc=I'm%20Elebeg,%20Full%20Stack%20Developer&descAlignY=51&descAlign=50)
   
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=00D4FF&center=true&vCenter=true&multiline=true&width=600&height=100&lines=const+developer+%3D+%7B;++name%3A+'Elebeg';++passion%3A+'Coding';%7D;" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=00D4FF&center=true&vCenter=true&multiline=true&width=600&height=100&lines=const+developer+%3D+%7B;++name%3A+'Elebeg';" alt="Typing SVG" />
 
 </div>
 
@@ -94,8 +94,8 @@ Aqui estão alguns dos meus projetos que mais me orgulho:
 
 <div align="center">
   
-  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Elebeg&repo=awesome-project&theme=tokyonight)](https://github.com/Elebeg/awesome-project)
-  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Elebeg&repo=cool-api&theme=tokyonight)](https://github.com/Elebeg/cool-api)
+  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Elebeg&repo=awesome-project&theme=tokyonight)](https://github.com/Elebeg/ReservasAABB)
+  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Elebeg&repo=cool-api&theme=tokyonight)](https://github.com/Elebeg/douumhelpfrontweb)
 
 </div>
 
@@ -103,17 +103,27 @@ Aqui estão alguns dos meus projetos que mais me orgulho:
 
 ## 🎮 Quando não estou codando...
 
-```javascript
-const hobbies = [
-    "🎵 Ouvindo música",
-    "📚 Aprendendo novas tecnologias", 
-    "🎮 Jogando videogames",
-    "☕ Tomando café",
-    "🌱 Contribuindo para open source"
-];
-
-hobbies.forEach(hobby => console.log(`Gosto de: ${hobby}`));
-```
+</div>
+<table align="center">
+<tr>
+<td align="center">🎵</td>
+<td><strong>Música</strong><br/>Ouvindo diversos gêneros musicais</td>
+<td align="center">📚</td>
+<td><strong>Aprendizado</strong><br/>Sempre estudando novas tecnologias</td>
+</tr>
+<tr>
+<td align="center">🎮</td>
+<td><strong>Gaming</strong><br/>Relaxando com videogames</td>
+<td align="center">☕</td>
+<td><strong>Café</strong><br/>Combustível do desenvolvedor</td>
+</tr>
+<tr>
+<td align="center">🌱</td>
+<td><strong>Open Source</strong><br/>Contribuindo para a comunidade</td>
+<td align="center">💡</td>
+<td><strong>Inovação</strong><br/>Criando soluções criativas</td>
+</tr>
+</table>
 
 ## 🤝 Vamos nos conectar!
 
