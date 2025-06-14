@@ -13,7 +13,7 @@ Atualmente, atuo como Full Stack Developer com foco em aplicações web e mobile
 <br /><br />
 
 <!-- Snake Game das contribuições -->
-<img src="https://raw.githubusercontent.com/Elebeg/Elebeg/output/github-contribution-grid-snake-neon.svg" alt="Snake Contribution Animation" />
+<img src="https://raw.githubusercontent.com/Elebeg/Elebeg/output/github-contribution-grid-snake-dark.svg" alt="Snake Contribution Animation" />
 
 <br /><br />
 
