@@ -99,8 +99,6 @@ Aqui estão alguns dos meus projetos que mais me orgulho:
 
 </div>
 
-> **Nota:** Certifique-se de substituir `awesome-project` e `cool-api` pelos nomes reais dos seus repositórios.
-
 ## 🎮 Quando não estou codando...
 
 </div>
