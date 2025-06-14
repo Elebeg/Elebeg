@@ -10,8 +10,9 @@
 
 ## 🎯 Sobre Mim
 
-```
-const Elebeg = {
+</td>
+<td>
+javascriptconst Elebeg = {
     code: ["TypeScript", "JavaScript", "Java", "Python"],
     askMeAbout: ["web dev", "backend", "cloud", "microservices"],
     technologies: {
@@ -32,7 +33,9 @@ const Elebeg = {
     currentFocus: "Construindo aplicações escaláveis e performáticas",
     funFact: "Eu debugo com console.log() e não tenho vergonha disso! 😄"
 };
-```
+</td>
+</tr>
+</table>
 
 ## 🛠️ Tech Stack
 
@@ -90,17 +93,27 @@ const Elebeg = {
 
 ## 🎮 Quando não estou codando...
 
-```javascript
-const hobbies = [
-    "🎵 Ouvindo música",
-    "📚 Aprendendo novas tecnologias", 
-    "🎮 Jogando videogames",
-    "☕ Tomando café",
-    "🌱 Contribuindo para open source"
-];
-
-hobbies.forEach(hobby => console.log(`Gosto de: ${hobby}`));
-```
+</div>
+<table align="center">
+<tr>
+<td align="center">🎵</td>
+<td><strong>Música</strong><br/>Ouvindo diversos gêneros musicais</td>
+<td align="center">📚</td>
+<td><strong>Aprendizado</strong><br/>Sempre estudando novas tecnologias</td>
+</tr>
+<tr>
+<td align="center">🎮</td>
+<td><strong>Gaming</strong><br/>Relaxando com videogames</td>
+<td align="center">☕</td>
+<td><strong>Café</strong><br/>Combustível do desenvolvedor</td>
+</tr>
+<tr>
+<td align="center">🌱</td>
+<td><strong>Open Source</strong><br/>Contribuindo para a comunidade</td>
+<td align="center">💡</td>
+<td><strong>Inovação</strong><br/>Criando soluções criativas</td>
+</tr>
+</table>
 
 ## 🤝 Vamos nos conectar!
 
