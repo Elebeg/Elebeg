@@ -16,120 +16,340 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Generate Snake Animation
-        uses: Platane/snk/svg-only@v3
-        with:
-          github_user_name: Elebeg
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-            dist/github-contribution-grid-snake-neon.svg?color_snake=#00d4ff&color_dots=#0d1117,#161b22,#21262d,#30363d,#00d4ff
-
       - name: Create directory
         run: mkdir -p dist
 
-      - name: Create Custom Tech Stack Visualization
+      - name: Create Custom Animated Snake
         run: |
-          # Gerar SVG 3D animado diretamente
-          cat > dist/tech-stack-3d.svg << 'EOF'
+          cat > dist/custom-snake-animation.svg << 'EOF'
           <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="techGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id="snakeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#007acc;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#39ff14;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
               </linearGradient>
-              <filter id="glow">
+              <radialGradient id="foodGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ee5a24;stop-opacity:1" />
+              </radialGradient>
+              <filter id="snakeGlow">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                 <feMerge> 
                   <feMergeNode in="coloredBlur"/>
                   <feMergeNode in="SourceGraphic"/>
                 </feMerge>
               </filter>
+              <filter id="pixelate">
+                <feFlood flood-color="#0d1117"/>
+                <feComposite in="SourceGraphic"/>
+              </filter>
             </defs>
             
+            <!-- Background -->
             <rect width="100%" height="100%" fill="#0d1117"/>
             
-            <!-- Floating Code Cubes Animation -->
-            <g transform="translate(50,50)">
-              <rect x="0" y="0" width="40" height="40" fill="url(#techGrad)" filter="url(#glow)">
-                <animateTransform attributeName="transform" type="rotate" 
-                  values="0 20 20;360 20 20" dur="6s" repeatCount="indefinite"/>
-              </rect>
-              <text x="45" y="25" fill="#00d4ff" font-family="monospace" font-size="12">TypeScript</text>
-            </g>
+            <!-- Grid background -->
+            <defs>
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#21262d" stroke-width="0.5" opacity="0.3"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)"/>
             
-            <g transform="translate(200,80)">
-              <rect x="0" y="0" width="35" height="35" fill="#f7df1e" filter="url(#glow)">
-                <animateTransform attributeName="transform" type="rotate" 
-                  values="0 17.5 17.5;360 17.5 17.5" dur="5s" repeatCount="indefinite"/>
-              </rect>
-              <text x="40" y="22" fill="#f7df1e" font-family="monospace" font-size="12">JavaScript</text>
-            </g>
-            
-            <g transform="translate(100,150)">
-              <rect x="0" y="0" width="45" height="45" fill="#61dafb" filter="url(#glow)">
-                <animateTransform attributeName="transform" type="rotate" 
-                  values="0 22.5 22.5;360 22.5 22.5" dur="4s" repeatCount="indefinite"/>
-              </rect>
-              <text x="50" y="28" fill="#61dafb" font-family="monospace" font-size="12">React</text>
-            </g>
-            
-            <g transform="translate(300,120)">
-              <rect x="0" y="0" width="38" height="38" fill="#43853d" filter="url(#glow)">
-                <animateTransform attributeName="transform" type="rotate" 
-                  values="0 19 19;360 19 19" dur="7s" repeatCount="indefinite"/>
-              </rect>
-              <text x="43" y="24" fill="#43853d" font-family="monospace" font-size="12">Node.js</text>
-            </g>
-            
-            <g transform="translate(450,60)">
-              <rect x="0" y="0" width="42" height="42" fill="#ed8b00" filter="url(#glow)">
-                <animateTransform attributeName="transform" type="rotate" 
-                  values="0 21 21;360 21 21" dur="5.5s" repeatCount="indefinite"/>
-              </rect>
-              <text x="47" y="26" fill="#ed8b00" font-family="monospace" font-size="12">Java</text>
-            </g>
-            
-            <g transform="translate(150,250)">
-              <rect x="0" y="0" width="40" height="40" fill="#ff5722" filter="url(#glow)">
-                <animateTransform attributeName="transform" type="rotate" 
-                  values="0 20 20;360 20 20" dur="6.5s" repeatCount="indefinite"/>
-              </rect>
-              <text x="45" y="25" fill="#ff5722" font-family="monospace" font-size="12">AWS</text>
-            </g>
-            
-            <g transform="translate(350,200)">
-              <rect x="0" y="0" width="36" height="36" fill="#0db7ed" filter="url(#glow)">
-                <animateTransform attributeName="transform" type="rotate" 
-                  values="0 18 18;360 18 18" dur="4.5s" repeatCount="indefinite"/>
-              </rect>
-              <text x="41" y="23" fill="#0db7ed" font-family="monospace" font-size="12">Docker</text>
-            </g>
-            
-            <!-- Central Developer Icon -->
-            <g transform="translate(400,200)">
-              <circle cx="0" cy="0" r="30" fill="none" stroke="#00d4ff" stroke-width="2" filter="url(#glow)">
-                <animate attributeName="r" values="25;35;25" dur="3s" repeatCount="indefinite"/>
+            <!-- Snake Body Segments -->
+            <g id="snake">
+              <!-- Snake Head -->
+              <circle cx="100" cy="200" r="12" fill="url(#snakeGrad)" filter="url(#snakeGlow)">
+                <animateMotion dur="8s" repeatCount="indefinite" rotate="auto">
+                  <path d="M 100,200 Q 200,100 400,200 Q 600,300 700,200 Q 600,100 400,200 Q 200,300 100,200 Z"/>
+                </animateMotion>
               </circle>
-              <text x="-25" y="5" fill="#00d4ff" font-family="monospace" font-size="16" font-weight="bold">ELB</text>
+              
+              <!-- Snake Body Segment 1 -->
+              <circle cx="80" cy="200" r="10" fill="#39ff14" filter="url(#snakeGlow)" opacity="0.9">
+                <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="0.2s">
+                  <path d="M 100,200 Q 200,100 400,200 Q 600,300 700,200 Q 600,100 400,200 Q 200,300 100,200 Z"/>
+                </animateMotion>
+              </circle>
+              
+              <!-- Snake Body Segment 2 -->
+              <circle cx="60" cy="200" r="9" fill="#00d4ff" filter="url(#snakeGlow)" opacity="0.8">
+                <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="0.4s">
+                  <path d="M 100,200 Q 200,100 400,200 Q 600,300 700,200 Q 600,100 400,200 Q 200,300 100,200 Z"/>
+                </animateMotion>
+              </circle>
+              
+              <!-- Snake Body Segment 3 -->
+              <circle cx="40" cy="200" r="8" fill="#39ff14" filter="url(#snakeGlow)" opacity="0.7">
+                <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="0.6s">
+                  <path d="M 100,200 Q 200,100 400,200 Q 600,300 700,200 Q 600,100 400,200 Q 200,300 100,200 Z"/>
+                </animateMotion>
+              </circle>
+              
+              <!-- Snake Body Segment 4 -->
+              <circle cx="20" cy="200" r="7" fill="#00d4ff" filter="url(#snakeGlow)" opacity="0.6">
+                <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="0.8s">
+                  <path d="M 100,200 Q 200,100 400,200 Q 600,300 700,200 Q 600,100 400,200 Q 200,300 100,200 Z"/>
+                </animateMotion>
+              </circle>
+              
+              <!-- Snake Body Segment 5 -->
+              <circle cx="0" cy="200" r="6" fill="#39ff14" filter="url(#snakeGlow)" opacity="0.5">
+                <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="1s">
+                  <path d="M 100,200 Q 200,100 400,200 Q 600,300 700,200 Q 600,100 400,200 Q 200,300 100,200 Z"/>
+                </animateMotion>
+              </circle>
             </g>
             
-            <!-- Connecting Lines Animation -->
-            <line x1="430" y1="200" x2="470" y2="81" stroke="#00d4ff" stroke-width="1" opacity="0.5">
-              <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite"/>
-            </line>
-            <line x1="400" y1="200" x2="320" y2="140" stroke="#00d4ff" stroke-width="1" opacity="0.5">
-              <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.5s" repeatCount="indefinite"/>
-            </line>
-            <line x1="400" y1="200" x2="120" y2="170" stroke="#00d4ff" stroke-width="1" opacity="0.5">
-              <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite"/>
-            </line>
+            <!-- Food Items (Commits) -->
+            <circle cx="300" cy="150" r="6" fill="url(#foodGrad)" filter="url(#snakeGlow)">
+              <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+            </circle>
             
-            <!-- Footer Text -->
-            <text x="50" y="350" fill="#58a6ff" font-family="monospace" font-size="14">Full Stack Developer | Tech Enthusiast</text>
-            <text x="50" y="370" fill="#7c3aed" font-family="monospace" font-size="12">Always learning, always coding ☕ 🚀</text>
+            <circle cx="500" cy="250" r="6" fill="url(#foodGrad)" filter="url(#snakeGlow)">
+              <animate attributeName="r" values="4;8;4" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <circle cx="150" cy="120" r="6" fill="url(#foodGrad)" filter="url(#snakeGlow)">
+              <animate attributeName="r" values="4;8;4" dur="1.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="1.2s" repeatCount="indefinite"/>
+            </circle>
+            
+            <circle cx="650" cy="150" r="6" fill="url(#foodGrad)" filter="url(#snakeGlow)">
+              <animate attributeName="r" values="4;8;4" dur="2.2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Particles/Stars -->
+            <circle cx="50" cy="50" r="1" fill="#00d4ff" opacity="0.7">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="750" cy="80" r="1.5" fill="#39ff14" opacity="0.6">
+              <animate attributeName="opacity" values="0.2;0.9;0.2" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="600" cy="50" r="1" fill="#ff6b6b" opacity="0.8">
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Score Display -->
+            <text x="50" y="350" fill="#00d4ff" font-family="monospace" font-size="16" font-weight="bold">
+              COMMITS EATEN: 
+              <tspan fill="#39ff14">1337</tspan>
+            </text>
+            
+            <!-- Game Over Effect (Flashing) -->
+            <text x="300" y="200" fill="#ff6b6b" font-family="monospace" font-size="24" font-weight="bold" opacity="0">
+              LEVEL UP!
+              <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="4s"/>
+            </text>
+            
           </svg>
           EOF
+
+      - name: Create Fixed Tech Stack Visualization
+        run: |
+          cat > dist/tech-stack-3d-fixed.svg << 'EOF'
+          <svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#007acc;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="jsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#f7df1e;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#f0db4f;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="reactGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#61dafb;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#21d4fd;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#68a063;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#43853d;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="javaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#f89820;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ed8b00;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="awsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#ff9900;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ff5722;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="dockerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#2496ed;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#0db7ed;stop-opacity:1" />
+              </linearGradient>
+              <filter id="techGlow">
+                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                <feMerge> 
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <filter id="shadow">
+                <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.5"/>
+              </filter>
+            </defs>
+            
+            <!-- Background -->
+            <rect width="100%" height="100%" fill="#0d1117"/>
+            
+            <!-- Floating Tech Cubes with 3D Effect -->
+            
+            <!-- TypeScript Cube -->
+            <g transform="translate(80,100)">
+              <g>
+                <!-- Cube faces -->
+                <path d="M0,0 L40,0 L50,10 L10,10 Z" fill="url(#techGradient)" opacity="0.9" filter="url(#shadow)"/>
+                <path d="M40,0 L40,40 L50,50 L50,10 Z" fill="url(#techGradient)" opacity="0.7" filter="url(#shadow)"/>
+                <path d="M0,0 L0,40 L10,50 L10,10 Z" fill="url(#techGradient)" opacity="0.8" filter="url(#shadow)"/>
+                <rect x="0" y="0" width="40" height="40" fill="url(#techGradient)" filter="url(#techGlow)"/>
+                
+                <!-- Rotation animation -->
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 25 25;360 25 25" dur="6s" repeatCount="indefinite"/>
+              </g>
+              <text x="60" y="25" fill="#00d4ff" font-family="monospace" font-size="14" font-weight="bold">TypeScript</text>
+            </g>
+            
+            <!-- JavaScript Cube -->
+            <g transform="translate(250,60)">
+              <g>
+                <path d="M0,0 L35,0 L45,10 L10,10 Z" fill="url(#jsGrad)" opacity="0.9" filter="url(#shadow)"/>
+                <path d="M35,0 L35,35 L45,45 L45,10 Z" fill="url(#jsGrad)" opacity="0.7" filter="url(#shadow)"/>
+                <path d="M0,0 L0,35 L10,45 L10,10 Z" fill="url(#jsGrad)" opacity="0.8" filter="url(#shadow)"/>
+                <rect x="0" y="0" width="35" height="35" fill="url(#jsGrad)" filter="url(#techGlow)"/>
+                
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 22.5 22.5;-360 22.5 22.5" dur="5s" repeatCount="indefinite"/>
+              </g>
+              <text x="55" y="25" fill="#f7df1e" font-family="monospace" font-size="14" font-weight="bold">JavaScript</text>
+            </g>
+            
+            <!-- React Cube -->
+            <g transform="translate(120,200)">
+              <g>
+                <path d="M0,0 L45,0 L55,10 L10,10 Z" fill="url(#reactGrad)" opacity="0.9" filter="url(#shadow)"/>
+                <path d="M45,0 L45,45 L55,55 L55,10 Z" fill="url(#reactGrad)" opacity="0.7" filter="url(#shadow)"/>
+                <path d="M0,0 L0,45 L10,55 L10,10 Z" fill="url(#reactGrad)" opacity="0.8" filter="url(#shadow)"/>
+                <rect x="0" y="0" width="45" height="45" fill="url(#reactGrad)" filter="url(#techGlow)"/>
+                
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 27.5 27.5;360 27.5 27.5" dur="4s" repeatCount="indefinite"/>
+              </g>
+              <text x="65" y="30" fill="#61dafb" font-family="monospace" font-size="14" font-weight="bold">React</text>
+            </g>
+            
+            <!-- Node.js Cube -->
+            <g transform="translate(350,140)">
+              <g>
+                <path d="M0,0 L38,0 L48,10 L10,10 Z" fill="url(#nodeGrad)" opacity="0.9" filter="url(#shadow)"/>
+                <path d="M38,0 L38,38 L48,48 L48,10 Z" fill="url(#nodeGrad)" opacity="0.7" filter="url(#shadow)"/>
+                <path d="M0,0 L0,38 L10,48 L10,10 Z" fill="url(#nodeGrad)" opacity="0.8" filter="url(#shadow)"/>
+                <rect x="0" y="0" width="38" height="38" fill="url(#nodeGrad)" filter="url(#techGlow)"/>
+                
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 24 24;-360 24 24" dur="7s" repeatCount="indefinite"/>
+              </g>
+              <text x="58" y="27" fill="#68a063" font-family="monospace" font-size="14" font-weight="bold">Node.js</text>
+            </g>
+            
+            <!-- Java Cube -->
+            <g transform="translate(500,80)">
+              <g>
+                <path d="M0,0 L42,0 L52,10 L10,10 Z" fill="url(#javaGrad)" opacity="0.9" filter="url(#shadow)"/>
+                <path d="M42,0 L42,42 L52,52 L52,10 Z" fill="url(#javaGrad)" opacity="0.7" filter="url(#shadow)"/>
+                <path d="M0,0 L0,42 L10,52 L10,10 Z" fill="url(#javaGrad)" opacity="0.8" filter="url(#shadow)"/>
+                <rect x="0" y="0" width="42" height="42" fill="url(#javaGrad)" filter="url(#techGlow)"/>
+                
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 26 26;360 26 26" dur="5.5s" repeatCount="indefinite"/>
+              </g>
+              <text x="62" y="30" fill="#f89820" font-family="monospace" font-size="14" font-weight="bold">Java</text>
+            </g>
+            
+            <!-- AWS Cube -->
+            <g transform="translate(180,320)">
+              <g>
+                <path d="M0,0 L40,0 L50,10 L10,10 Z" fill="url(#awsGrad)" opacity="0.9" filter="url(#shadow)"/>
+                <path d="M40,0 L40,40 L50,50 L50,10 Z" fill="url(#awsGrad)" opacity="0.7" filter="url(#shadow)"/>
+                <path d="M0,0 L0,40 L10,50 L10,10 Z" fill="url(#awsGrad)" opacity="0.8" filter="url(#shadow)"/>
+                <rect x="0" y="0" width="40" height="40" fill="url(#awsGrad)" filter="url(#techGlow)"/>
+                
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 25 25;-360 25 25" dur="6.5s" repeatCount="indefinite"/>
+              </g>
+              <text x="60" y="27" fill="#ff9900" font-family="monospace" font-size="14" font-weight="bold">AWS</text>
+            </g>
+            
+            <!-- Docker Cube -->
+            <g transform="translate(400,260)">
+              <g>
+                <path d="M0,0 L36,0 L46,10 L10,10 Z" fill="url(#dockerGrad)" opacity="0.9" filter="url(#shadow)"/>
+                <path d="M36,0 L36,36 L46,46 L46,10 Z" fill="url(#dockerGrad)" opacity="0.7" filter="url(#shadow)"/>
+                <path d="M0,0 L0,36 L10,46 L10,10 Z" fill="url(#dockerGrad)" opacity="0.8" filter="url(#shadow)"/>
+                <rect x="0" y="0" width="36" height="36" fill="url(#dockerGrad)" filter="url(#techGlow)"/>
+                
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 23 23;360 23 23" dur="4.5s" repeatCount="indefinite"/>
+              </g>
+              <text x="56" y="25" fill="#2496ed" font-family="monospace" font-size="14" font-weight="bold">Docker</text>
+            </g>
+            
+            <!-- Central Developer Hub -->
+            <g transform="translate(400,200)">
+              <circle cx="0" cy="0" r="40" fill="none" stroke="#00d4ff" stroke-width="3" filter="url(#techGlow)">
+                <animate attributeName="r" values="35;45;35" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="stroke-width" values="2;4;2" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="0" cy="0" r="30" fill="rgba(0,212,255,0.1)" stroke="#007acc" stroke-width="2">
+                <animate attributeName="r" values="25;35;25" dur="4s" repeatCount="indefinite"/>
+              </circle>
+              <text x="-30" y="8" fill="#00d4ff" font-family="monospace" font-size="20" font-weight="bold">
+                ELEBEG
+                <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+              </text>
+            </g>
+            
+            <!-- Connecting Lines with Animation -->
+            <line x1="400" y1="200" x2="480" y2="101" stroke="#00d4ff" stroke-width="2" opacity="0.6">
+              <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-width" values="1;3;1" dur="3s" repeatCount="indefinite"/>
+            </line>
+            <line x1="400" y1="200" x2="370" y2="160" stroke="#00d4ff" stroke-width="2" opacity="0.6">
+              <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-width" values="1;3;1" dur="3.5s" repeatCount="indefinite"/>
+            </line>
+            <line x1="400" y1="200" x2="145" y2="222" stroke="#00d4ff" stroke-width="2" opacity="0.6">
+              <animate attributeName="opacity" values="0.3;0.9;0.3" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-width" values="1;3;1" dur="2.5s" repeatCount="indefinite"/>
+            </line>
+            <line x1="400" y1="200" x2="270" y2="77" stroke="#00d4ff" stroke-width="2" opacity="0.6">
+              <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.2s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-width" values="1;3;1" dur="4s" repeatCount="indefinite"/>
+            </line>
+            
+            <!-- Footer -->
+            <text x="50" y="450" fill="#58a6ff" font-family="monospace" font-size="16" font-weight="bold">
+              Full Stack Developer | Tech Enthusiast
+            </text>
+            <text x="50" y="470" fill="#7c3aed" font-family="monospace" font-size="14">
+              Building the future, one commit at a time ☕ 🚀
+            </text>
+            
+          </svg>
+          EOF
+
+      - name: Generate Original Snake Animation
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: Elebeg
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
       - name: Create animated profile banner
         run: |
@@ -203,20 +423,20 @@ jobs:
 
       - name: Update README with animations
         run: |
-          # Gerar código markdown para inserir no README
           cat > 3d-animations.md << 'EOF'
-          ## 🎮 Animações 3D do Perfil
+          ## 🎮 Animações do Perfil
           
-          ### 🐍 Contribuições Snake Game
-          ![Snake animation](https://raw.githubusercontent.com/Elebeg/Elebeg/output/github-contribution-grid-snake-neon.svg)
+          ### 🐍 Snake Game Customizada (Animação Fluida)
+          ![Custom Snake Animation](https://raw.githubusercontent.com/Elebeg/Elebeg/output/custom-snake-animation.svg)
           
-          ### 💻 Tech Stack 3D
-          ![Tech Stack 3D](https://raw.githubusercontent.com/Elebeg/Elebeg/output/tech-stack-3d.svg)
+          ### 🐍 Snake Game das Contribuições (Tradicional)
+          ![Snake animation](https://raw.githubusercontent.com/Elebeg/Elebeg/output/github-contribution-grid-snake-dark.svg)
+          
+          ### 💻 Tech Stack 3D (Corrigida)
+          ![Tech Stack 3D Fixed](https://raw.githubusercontent.com/Elebeg/Elebeg/output/tech-stack-3d-fixed.svg)
           
           ### 🎨 Banner Animado
           ![Animated Banner](https://raw.githubusercontent.com/Elebeg/Elebeg/output/animated-banner.svg)
           
           EOF
           
-          echo "Arquivos de animação 3D gerados com sucesso!"
-          echo "Adicione o conteúdo de 3d-animations.md ao seu README.md principal"

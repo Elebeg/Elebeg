@@ -13,7 +13,7 @@ Atualmente, atuo como Full Stack Developer com foco em aplicações web e mobile
 <br /><br />
 
 <!-- Snake Game das contribuições -->
-<img src="https://raw.githubusercontent.com/Elebeg/Elebeg/output/github-contribution-grid-snake-neon.svg" alt="Snake Contribution Animation" />
+<img src="https://raw.githubusercontent.com/Elebeg/Elebeg/output/custom-snake-animation.svg" alt="Snake Contribution Animation" />
 
 <br /><br />
 
@@ -22,7 +22,7 @@ Atualmente, atuo como Full Stack Developer com foco em aplicações web e mobile
 ## 🚀 Sobre mim
 
 - 🎓 Estudante de **Desenvolvimento de Software** com interesse em IA, Web3 e UX/UI.
-- 💼 Desenvolvedor Full Stack (React, React Native, Node.js, NestJS, PostgreSQL).
+- 💼 Desenvolvedor Full Stack (React, Java, Node.js, NestJS, PostgreSQL).
 - 🌱 Atualmente explorando **Python**, **Computer Vision** e **Arquiteturas Inteligentes**.
 - 💬 Gosto de colaborar, aprender em equipe e construir projetos com propósito.
 - ✨ Também cuido da **qualidade do código**, testes e boas práticas de arquitetura.
