@@ -1,0 +1,205 @@
+
+# .github/workflows/developer-3d.yml
+name: Generate Developer 3D Animation
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"  # Roda a cada 12 horas
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Generate Snake Animation
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: Elebeg
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            dist/github-contribution-grid-snake-neon.svg?color_snake=#00d4ff&color_dots=#0d1117,#161b22,#21262d,#30363d,#00d4ff
+
+      - name: Generate Skyline
+        run: |
+          # Instalar dependências para gerar skyline 3D
+          npm install -g github-city
+          github-city Elebeg --year 2024 --output dist/skyline.stl
+
+      - name: Create Custom Tech Stack Visualization
+        run: |
+          # Script Python para gerar visualização 3D das tecnologias
+          cat > generate_tech_3d.py << 'EOF'
+          import json
+          import requests
+          from datetime import datetime
+          
+          # Simular dados das tecnologias (baseado no seu README)
+          tech_data = {
+              "languages": {
+                  "TypeScript": 35,
+                  "JavaScript": 30,
+                  "Java": 20,
+                  "Python": 15
+              },
+              "frameworks": {
+                  "React": 25,
+                  "Node.js": 20,
+                  "Spring Boot": 15,
+                  "NestJS": 15,
+                  "FastAPI": 10,
+                  "Django": 10,
+                  "Express": 5
+              },
+              "tools": {
+                  "AWS": 20,
+                  "Docker": 18,
+                  "MongoDB": 15,
+                  "PostgreSQL": 12,
+                  "Redis": 10,
+                  "Git": 25
+              }
+          }
+          
+          # Gerar SVG 3D animado
+          svg_content = '''
+          <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="techGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#007acc;stop-opacity:1" />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge> 
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            
+            <rect width="100%" height="100%" fill="#0d1117"/>
+            
+            <!-- Floating Code Cubes Animation -->
+            <g transform="translate(50,50)">
+              <rect x="0" y="0" width="40" height="40" fill="url(#techGrad)" filter="url(#glow)">
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 20 20;360 20 20" dur="6s" repeatCount="indefinite"/>
+              </rect>
+              <text x="45" y="25" fill="#00d4ff" font-family="monospace" font-size="12">TypeScript</text>
+            </g>
+            
+            <g transform="translate(200,80)">
+              <rect x="0" y="0" width="35" height="35" fill="#f7df1e" filter="url(#glow)">
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 17.5 17.5;360 17.5 17.5" dur="5s" repeatCount="indefinite"/>
+              </rect>
+              <text x="40" y="22" fill="#f7df1e" font-family="monospace" font-size="12">JavaScript</text>
+            </g>
+            
+            <g transform="translate(100,150)">
+              <rect x="0" y="0" width="45" height="45" fill="#61dafb" filter="url(#glow)">
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 22.5 22.5;360 22.5 22.5" dur="4s" repeatCount="indefinite"/>
+              </rect>
+              <text x="50" y="28" fill="#61dafb" font-family="monospace" font-size="12">React</text>
+            </g>
+            
+            <g transform="translate(300,120)">
+              <rect x="0" y="0" width="38" height="38" fill="#43853d" filter="url(#glow)">
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 19 19;360 19 19" dur="7s" repeatCount="indefinite"/>
+              </rect>
+              <text x="43" y="24" fill="#43853d" font-family="monospace" font-size="12">Node.js</text>
+            </g>
+            
+            <g transform="translate(450,60)">
+              <rect x="0" y="0" width="42" height="42" fill="#ed8b00" filter="url(#glow)">
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 21 21;360 21 21" dur="5.5s" repeatCount="indefinite"/>
+              </rect>
+              <text x="47" y="26" fill="#ed8b00" font-family="monospace" font-size="12">Java</text>
+            </g>
+            
+            <g transform="translate(150,250)">
+              <rect x="0" y="0" width="40" height="40" fill="#ff5722" filter="url(#glow)">
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 20 20;360 20 20" dur="6.5s" repeatCount="indefinite"/>
+              </rect>
+              <text x="45" y="25" fill="#ff5722" font-family="monospace" font-size="12">AWS</text>
+            </g>
+            
+            <g transform="translate(350,200)">
+              <rect x="0" y="0" width="36" height="36" fill="#0db7ed" filter="url(#glow)">
+                <animateTransform attributeName="transform" type="rotate" 
+                  values="0 18 18;360 18 18" dur="4.5s" repeatCount="indefinite"/>
+              </rect>
+              <text x="41" y="23" fill="#0db7ed" font-family="monospace" font-size="12">Docker</text>
+            </g>
+            
+            <!-- Central Developer Icon -->
+            <g transform="translate(400,200)">
+              <circle cx="0" cy="0" r="30" fill="none" stroke="#00d4ff" stroke-width="2" filter="url(#glow)">
+                <animate attributeName="r" values="25;35;25" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <text x="-25" y="5" fill="#00d4ff" font-family="monospace" font-size="16" font-weight="bold">ELB</text>
+            </g>
+            
+            <!-- Connecting Lines Animation -->
+            <line x1="430" y1="200" x2="470" y2="81" stroke="#00d4ff" stroke-width="1" opacity="0.5">
+              <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite"/>
+            </line>
+            <line x1="400" y1="200" x2="320" y2="140" stroke="#00d4ff" stroke-width="1" opacity="0.5">
+              <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.5s" repeatCount="indefinite"/>
+            </line>
+            <line x1="400" y1="200" x2="120" y2="170" stroke="#00d4ff" stroke-width="1" opacity="0.5">
+              <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite"/>
+            </line>
+            
+            <!-- Footer Text -->
+            <text x="50" y="350" fill="#58a6ff" font-family="monospace" font-size="14">Full Stack Developer | Tech Enthusiast</text>
+            <text x="50" y="370" fill="#7c3aed" font-family="monospace" font-size="12">Always learning, always coding ☕ 🚀</text>
+          </svg>
+          '''
+          
+          with open('dist/tech-stack-3d.svg', 'w') as f:
+              f.write(svg_content)
+          
+          print("Tech stack 3D visualization generated!")
+          EOF
+          
+          python generate_tech_3d.py
+
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update README with animations
+        run: |
+          # Gerar código markdown para inserir no README
+          cat > 3d-animations.md << 'EOF'
+          ## 🎮 Animações 3D do Perfil
+          
+          ### 🐍 Contribuições Snake Game
+          ![Snake animation](https://raw.githubusercontent.com/Elebeg/Elebeg/output/github-contribution-grid-snake-neon.svg)
+          
+          ### 🏗️ Tech Stack 3D
+          ![Tech Stack 3D](https://raw.githubusercontent.com/Elebeg/Elebeg/output/tech-stack-3d.svg)
+          
+          ### 🌃 GitHub Skyline
+          <img src="https://raw.githubusercontent.com/Elebeg/Elebeg/output/skyline.stl" alt="GitHub Skyline" width="600"/>
+          
+          EOF
+          
+          echo "Arquivos de animação 3D gerados com sucesso!"
+          echo "Adicione o conteúdo de 3d-animations.md ao seu README.md principal"
