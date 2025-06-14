@@ -94,8 +94,8 @@ Aqui estão alguns dos meus projetos que mais me orgulho:
 
 <div align="center">
   
-  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Elebeg&repo=awesome-project&theme=tokyonight)](https://github.com/Elebeg/ReservasAABB)
-  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Elebeg&repo=cool-api&theme=tokyonight)](https://github.com/Elebeg/douumhelpfrontweb)
+  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Elebeg&repo=ReservasAABB&theme=tokyonight)](https://github.com/Elebeg/ReservasAABB)
+  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Elebeg&repo=douumhelpfrontweb&theme=tokyonight)](https://github.com/Elebeg/douumhelpfrontweb)
 
 </div>
 
