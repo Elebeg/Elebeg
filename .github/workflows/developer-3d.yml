@@ -1,3 +1,4 @@
+# .github/workflows/developer-3d.yml
 name: Generate Developer 3D Animation
 
 on:
@@ -24,51 +25,13 @@ jobs:
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
             dist/github-contribution-grid-snake-neon.svg?color_snake=#00d4ff&color_dots=#0d1117,#161b22,#21262d,#30363d,#00d4ff
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
       - name: Create directory
         run: mkdir -p dist
 
       - name: Create Custom Tech Stack Visualization
         run: |
-          # Script Python para gerar visualização 3D das tecnologias
-          cat > generate_tech_3d.py << 'EOF'
-          import json
-          import requests
-          from datetime import datetime
-          
-          # Simular dados das tecnologias (baseado no seu README)
-          tech_data = {
-              "languages": {
-                  "TypeScript": 35,
-                  "JavaScript": 30,
-                  "Java": 20,
-                  "Python": 15
-              },
-              "frameworks": {
-                  "React": 25,
-                  "Node.js": 20,
-                  "Spring Boot": 15,
-                  "NestJS": 15,
-                  "FastAPI": 10,
-                  "Django": 10,
-                  "Express": 5
-              },
-              "tools": {
-                  "AWS": 20,
-                  "Docker": 18,
-                  "MongoDB": 15,
-                  "PostgreSQL": 12,
-                  "Redis": 10,
-                  "Git": 25
-              }
-          }
-          
-          # Gerar SVG 3D animado
-          svg_content = '''
+          # Gerar SVG 3D animado diretamente
+          cat > dist/tech-stack-3d.svg << 'EOF'
           <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="techGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -166,15 +129,7 @@ jobs:
             <text x="50" y="350" fill="#58a6ff" font-family="monospace" font-size="14">Full Stack Developer | Tech Enthusiast</text>
             <text x="50" y="370" fill="#7c3aed" font-family="monospace" font-size="12">Always learning, always coding ☕ 🚀</text>
           </svg>
-          '''
-          
-          with open('dist/tech-stack-3d.svg', 'w') as f:
-              f.write(svg_content)
-          
-          print("Tech stack 3D visualization generated!")
           EOF
-          
-          python generate_tech_3d.py
 
       - name: Create animated profile banner
         run: |
