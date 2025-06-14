@@ -10,24 +10,20 @@
 
 ## 🎯 Sobre Mim
 
-```typescript
+```javascript
 const Elebeg = {
     code: ["TypeScript", "JavaScript", "Java", "Python"],
     askMeAbout: ["web dev", "backend", "cloud", "microservices"],
     technologies: {
         frontEnd: {
-            js: ["React"],
-            css: ["Tailwind", "Styled-Components"]
+            js: ["React"]
         },
         backEnd: {
             js: ["Node.js", "Express", "NestJS"],
-            java: ["Spring Boot"],
-            python: ["FastAPI", "Django"]
+            java: ["Spring Boot"]
         },
         cloud: ["AWS"],
-        devOps: ["Docker", "Git"],
-        databases: ["MongoDB", "PostgreSQL", "Redis"],
-        misc: ["Socket.io", "GraphQL", "REST APIs"]
+        devOps: ["Docker", "Git"]
     },
     currentFocus: "Construindo aplicações escaláveis e performáticas",
     funFact: "Eu debugo com console.log() e não tenho vergonha disso! 😄"
@@ -106,8 +102,10 @@ hobbies.forEach(hobby => console.log(`Gosto de: ${hobby}`));
 
 <div align="center">
   
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/lucas-schuler-foppa-24723b272/)
-  [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:lucasfoppa@hotmail.com)
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/elebeg)
+  [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/elebeg)
+  [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:seu-email@exemplo.com)
+  [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://elebeg.dev)
 
 </div>
 
